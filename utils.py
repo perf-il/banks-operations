@@ -40,9 +40,9 @@ def get_secret_card(name_card: str):
     :param name_card: строку с названием карты и 16-ти значным номером
     :return: f-строку  в формате 'Имя карты XXXX XX** **** XXXX'
     """
-    name = name_card[:-15]
+    name = name_card[:-17]
     number = name_card[-16:]
-    return f'{name}{number[:3]} {number[4:6]}** **** {number[-4:]}'
+    return f'{name} {number[:4]} {number[4:6]}** **** {number[-4:]}'
 
 
 def get_secret_bill(name_bill):
