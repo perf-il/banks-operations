@@ -1,13 +1,15 @@
 import utils as ut
 
-
+# цикл вывода n последних операций (по-умолчанию 5)
 for operation in ut.get_n_operation():
-    date_operation = ut.get_date(operation['date'])
-    descr_operation = operation.get('description')
-    from_operation = operation.get('from')
-    to_operation = operation.get('to')
-    amount = operation['operationAmount']['amount']
-    currency = operation['operationAmount']['currency']['name']
+    date_operation = ut.get_date(operation['date'])              #переменная с датой совершения операции
+    descr_operation = operation.get('description')               #переменная с названием операции
+    from_operation = operation.get('from')                       #переменная с указанием откуда совершен перевод
+    to_operation = operation.get('to')                           #переменная с указанием куда совершен перевод
+    amount = operation['operationAmount']['amount']              #переменная с суммой операции
+    currency = operation['operationAmount']['currency']['name']  #переменная с названием валюты
+
+    #блок вывода отформатированных значений по каждой операции
     print(date_operation, descr_operation)
     if from_operation is not None:
         if ut.is_bill(from_operation):
@@ -17,4 +19,3 @@ for operation in ut.get_n_operation():
     else:
         print(f'{ut.get_secret_bill(to_operation)}')
     print(amount, currency, '\n')
-
